@@ -1,14 +1,3 @@
-/**
- Copyright (C) 2022.
- Licensed under the  GPL-3.0 License;
- You may not use this file except in compliance with the License.
- It is supplied in the hope that it may be useful.
- * @project_name : Secktor-Md
- * @author : SamPandey001 <https://github.com/SamPandey001>
- * @description : Secktor,A Multi-functional whatsapp bot.
- * @version 0.0.6
- **/
-
 const { tlang, botpic, cmd, prefix, runtime, Config , sleep } = require('../lib')
 const axios = require('axios')
 const speed = require('performance-now')
@@ -19,7 +8,7 @@ cmd({
     alias :['gpt'],
     desc: "chat with an AI(GPT)",
     category: "AI",
-    use: '<Hii,Secktor>',
+    use: '<Hii,how can i help you>',
     filename: __filename,
 },
 async(Void, citel,text) => {
@@ -114,15 +103,15 @@ cmd({
         filename: __filename,
     },
     async(Void, citel) => {
-        let { data } = await axios.get('https://api.github.com/repos/excelottah6/IZUKU-MD')
+        let { data } = await axios.get('https://api.github.com/repos/Maccoder3/MAC-MD')
         let cap = `Hey ${citel.pushName}\n
-╭┈─────────────────────    .· * • ˚
+╭┈────────────    .· * • ˚
 │*⭐ Total Stars:* ${data.stargazers_count} stars
 │*🍴 Forks:* ${data.forks_count} forks
-│*📡 Repo:* https://github.com/excelottah6/IZUKU-MD
+│*📡 Repo:* https://github.com/Maccoder3/MAC-MD
 │*🏘Group:* https://chat.whatsapp.com/BEhEne7RdGBC3y5vYltuxL
-│*🧑‍💻Deploy IZUKU MD*:https://github.com/excelottah6/IZUKU-MD
-╰──────────────────────✬      * ˚  ✶`
+│*🧑‍💻Deploy MAC MD*:https://github.com/Maccoder3/MAC-MD
+╰──────────────✬      * ˚  ✶`
         let buttonMessaged = {
             image: { url: await botpic() },
             caption: cap,
@@ -130,7 +119,7 @@ cmd({
             headerType: 4,
             contextInfo: {
                 externalAdReply: {
-                    title: "IZUKU-Repo",
+                    title: "Mac-Repo",
                     body: "Easy to Use",
                     thumbnail: log0,
                     mediaType: 4,
@@ -193,18 +182,3 @@ cmd({
 )
 
 //---------------------------------------------------------------------------
-cmd({
-    pattern: "theme",
-    desc: "To find all themes",
-    category: "general",
-    filename: __filename,
-},
-async(Void, citel,text,{isCreator}) => {
-
-if(!isCreator) return citel.reply(tlang().owner);
-let str="*All available themes in IZUKU *"
-str+=`1. IZUKU\n2. ADAM\n3. AYANOKOJI\n4. EDITH\n5. FRIDAY\n6. GENOS\n7. GIDEON\n8. GOKU\n9. LUFFY\n10. NARUTO\n11. NEZUKO\n12. PARKER\n13. GARENA\n14. SECKTOR\n15 Eren Jeager\n\n these are the themes of IZUKU Userbot.\_Reply ${prefix}setvar THEME:GARENA`
-return citel.reply(str)
-    
-}
-)
