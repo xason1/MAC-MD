@@ -879,7 +879,7 @@ cmd({
     //---------------------------------------------------------------------------
 
 cmd({
-  pattern: 'tag',
+  pattern: "tag",
   desc: 'Tag everyone in the chat',
   category: 'group'
 }, async (message, match) => {
@@ -889,7 +889,6 @@ cmd({
   } else {
     target = message.jid;
   }
-  
   const participants = await citel.getGroupParticipants(target);
   const mentionString = participants.map((participant) => `@${participant.jid}`).join(' ');
   await citel.sendMessage(target, mentionString);
@@ -897,7 +896,7 @@ cmd({
 //--------------------------------------------------------------------------------
 
 cmd({
-  pattern: 'hidetag',
+  pattern: "hidetag",
   desc: 'Hide tags in a message',
   category: 'utility'
 }, async (Void, citel) => {
@@ -906,7 +905,8 @@ cmd({
   const hiddenTagMessage = `**${mentionString}**`;
   await citel.sendMessage(citel.jid, hiddenTagMessage);
 });
-//--------------------------------------------------------------------------------cmd({
+//--------------------------------------------------------------------------------
+cmd({
   pattern: "broadcast",
   alias: ["bc"],
   desc: "Bot makes a broadcast in all groups",
