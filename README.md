@@ -17,12 +17,12 @@
     </a>
   </p>
 ---
-# ```Scan QR Code```
+Scan QR Code
 
-1. ***Get [SESSION-ID](https://replit.com/@Excelottah/BLACK-Md) by scanning QR code. `Whatapp>Three dots>Linked Devices`***
+1. ***Get [SESSION-ID](https://replit.com/@Excelottah/MAC-Md) by scanning QR code. `Whatapp>Three dots>Linked Devices`***
 --- 
 # ```Fork Repo```
-2. ***Click [FORK](https://github.com/excelottah6/IZUKU-MD/fork)***
+2. ***Click [FORK](https://github.com/Maccoder3/MAC-MD/fork)***
  
 ---
   <hr>
