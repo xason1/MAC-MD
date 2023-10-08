@@ -877,14 +877,23 @@ cmd({
         }
     )
     //---------------------------------------------------------------------------
+const { cmd, citel } = require('../lib');
+
 cmd({
   pattern: 'tag',
   desc: 'Tag everyone in the chat',
-  category: 'group'
-}, async (Void, citel) => {
-  const participants = await citel.getGroupParticipants(citel.jid);
+  category: 'utility'
+}, async (message, match) => {
+  let target;
+  if (message.reply_message) {
+    target = message.reply_message.jid;
+  } else {
+    target = message.jid;
+  }
+  
+  const participants = await citel.getGroupParticipants(target);
   const mentionString = participants.map((participant) => `@${participant.jid}`).join(' ');
-  await citel.sendMessage(citel.jid, mentionString);
+  await citel.sendMessage(target, mentionString);
 });
 //--------------------------------------------------------------------------------
 
@@ -900,49 +909,51 @@ cmd({
 });
 //--------------------------------------------------------------------------------
 cmd({
-    pattern: "broadcast",
-    alias: ["bc"],
-    desc: "Bot makes a broadcast in all groups",
-    fromMe: true,
-    category: "group",
-    filename: __filename,
-    use: '<text for broadcast>',
-}, async (Void, citel, text) => {
-    if (!isCreator) return citel.reply(tlang().owner);
+  pattern: "broadcast",
+  alias: ["bc"],
+  desc: "Bot makes a broadcast in all groups",
+  fromMe: true,
+  category: "group",
+  filename: __filename,
+  use: '<text for broadcast>',
+}, async (message, match, text) => {
+  if (!isCreator) {
+    return await message.reply(tlang().owner);
+  }
 
-    let getGroups = await Void.groupFetchAllParticipating();
-    let groups = Object.entries(getGroups).map((entry) => entry[1]);
-    let anu = groups.map((v) => v.id);
+  let getGroups = await message.groupFetchAll();
+  let groups = Object.values(getGroups);
+  let anu = groups.map((group) => group.jid);
 
-    citel.reply(`Sending Broadcast to ${anu.length} Group Chats. Estimated Completion Time: ${anu.length * 1.5} seconds`);
+  await message.reply(`Sending broadcast to ${anu.length} group chats. Estimated completion time: ${anu.length * 1.5} seconds`);
 
-    for (let i of anu) {
-        await sleep(1500);
-        let txt = `*--❗${tlang().title} Broadcast❗--*\n\n👾 Author: ${citel.pushName}\n\n${text}`;
-        let buttonMessaged = {
-            image: log0,
-            caption: txt,
-            footer: citel.pushName,
-            headerType: 1,
-            contextInfo: {
-                forwardingScore: 999,
-                isForwarded: false,
-                externalAdReply: {
-                    title: 'Broadcast by ' + citel.pushName,
-                    body: tlang().title,
-                    thumbnail: log0,
-                    mediaUrl: '',
-                    mediaType: 2,
-                    sourceUrl: gurl,
-                    showAdAttribution: true,
-                },
-            },
-        };
+  for (let i of anu) {
+    await sleep(1500);
+    let txt = `*--❗ ${tlang().title} Broadcast ❗--*\n\n👾 Author: ${message.sender.pushname}\n\n${text}`;
+    let buttonMessage = {
+      image: log0,
+      caption: txt,
+      footer: message.sender.pushname,
+      headerType: 1,
+      contextInfo: {
+        forwardingScore: 999,
+        isForwarded: false,
+        externalAdReply: {
+          title: 'Broadcast by ' + message.sender.pushname,
+          body: tlang().title,
+          thumbnail: log0,
+          mediaUrl: '',
+          mediaType: 2,
+          sourceUrl: gurl,
+          showAdAttribution: true,
+        },
+      },
+    };
 
-        await Void.sendMessage(i, buttonMessaged, { quoted: citel });
-    }
+    await message.client.sendMessage(i, buttonMessage, MessageType.text, { quoted: message.data });
+  }
 
-    citel.reply(`Successfully sent broadcast to ${anu.length} group(s)`);
+  await message.reply(`Successfully sent broadcast to ${anu.length} group(s)`);
 });
 //---------------------------------------------------------------------------
 if (Config.WORKTYPE !== 'private') {
@@ -1014,7 +1025,7 @@ if (Config.WORKTYPE !== 'private') {
           },
           caption: `
 ━━━━━༺❃༻━━━━━◇
-☱ *Hey! Someone just leveled up! ✨*
+☱ *look at that! Someone just leveled up! ✨*
 ☱ *👤 Name*: ${citel.pushName}
 ☱ *🎚 Level*: ${sck1.level}
 ☱ *🛑 Exp*: ${sck1.xp} / ${Levels.xpFor(sck1.level + 1)}
