@@ -882,7 +882,7 @@ const { cmd, citel } = require('../lib');
 cmd({
   pattern: 'tag',
   desc: 'Tag everyone in the chat',
-  category: 'utility'
+  category: 'group'
 }, async (message, match) => {
   let target;
   if (message.reply_message) {
