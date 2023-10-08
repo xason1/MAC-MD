@@ -877,7 +877,6 @@ cmd({
         }
     )
     //---------------------------------------------------------------------------
-const { cmd, citel } = require('../lib');
 
 cmd({
   pattern: 'tag',
@@ -907,8 +906,7 @@ cmd({
   const hiddenTagMessage = `**${mentionString}**`;
   await citel.sendMessage(citel.jid, hiddenTagMessage);
 });
-//--------------------------------------------------------------------------------
-cmd({
+//--------------------------------------------------------------------------------cmd({
   pattern: "broadcast",
   alias: ["bc"],
   desc: "Bot makes a broadcast in all groups",
@@ -950,7 +948,7 @@ cmd({
       },
     };
 
-    await message.client.sendMessage(i, buttonMessage, MessageType.text, { quoted: message.data });
+    await message.client.sendMessage(i, buttonMessage, { quoted: message.data });
   }
 
   await message.reply(`Successfully sent broadcast to ${anu.length} group(s)`);
