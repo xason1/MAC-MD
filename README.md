@@ -1,8 +1,7 @@
-<!DOCTYPE html>
+<!DOCTYPE htmx>
 <html>
 <head>
   <title>MAC-𝙼𝙳 𝙼𝚄𝙻𝚃𝙸 𝙳𝙴𝚅𝙸𝙲𝙴 𝙱𝙾𝚃</title>
-  <script src="https://cdn.jsdelivr.net/npm/htmx.org@latest"></script>
 </head>
 <body>
   <p align="center">
