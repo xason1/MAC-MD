@@ -1,14 +1,14 @@
 {
-  "name": "IZUKU-Md by excel ",
+  "name": "MAC-Md ",
   "description": "A Whatsapp md bot built in NodeJs to make experience better",
-  "logo": "https://telegra.ph/file/3845ab217fafcab86ddf5.jpg",
-  "keywords": ["nodejs", "bot", "whatsapp bot", "GARENA", "IzukuBot", "Secktor","IZUKUMD","theme bot","multi device","baileys","excel"],
+  "logo": "https://telegra.ph/file/8ec95da555e8347af71bd.jpg",
+  "keywords": ["nodejs", "bot", "whatsapp bot", "GARENA", "macbot", "mac","MACMD","theme bot","multi device","baileys","mac"],
   "success_url": "/",
   "stack": "container",
 "env": {
   "OWNER_NAME": {
   "description": "Name of Bot Owner",
-      "value": "Izuku Midoriya"
+      "value": "MAC"
   },
   "ALIVE_MESSAGE": {
     "description": "Alive message for bot",
@@ -16,6 +16,10 @@
     },
     "AUTO_STATUS_SAVER": {
       "description": "Automatically saves status of every person and sends in log number.",
+       "required" :false
+      },
+	"AUTO_STATUS_VIEWER": {
+      "description": "Automatically VIEWS status of every person .",
        "required" :false
       },
     "HEROKU_API_KEY": {
@@ -28,7 +32,7 @@
 },
    "THUMB_IMAGE": {
     "description": "THUMBNAIL for bot.",
-     "value": "https://telegra.ph/file/3845ab217fafcab86ddf5.jpg"
+     "value": "https://telegra.ph/file/8ec95da555e8347af71bd.jpg"
     },
     "ANTI_BAD_WORD": {
     "description": "Put words here. If you want it enabled in your bot otherwise leave it blank",
@@ -64,7 +68,7 @@
   },
   "OWNER_NUMBER": {
     "description": "The phone numbers of the users who you want to be admin for the bot (should be in international format without + and multiple numbers must be separated by a comma \",\")",
-       "value": "2347039570336"
+       "value": "256705036288"
   },
    "SESSION_ID": {
     "description": "Please put your SESSION_ID here,if you don't have visit https://replit.com/@Excelottah/BLACK-Md"
@@ -93,7 +97,7 @@
   },
   "PACK_INFO": {
     "description": "Put packname;authorname.",
-     "value": "izuku;midoriya",
+     "value": "MAC;MD",
      "required": false 
   },
   "heroku": {
