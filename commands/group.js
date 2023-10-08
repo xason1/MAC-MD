@@ -98,7 +98,7 @@ cmd({
         citel.reply(`*Check your dm master ${tlang().greet}*`);
         await Void.sendMessage(`${citel.sender}`, {
             image: log0,
-            caption: `*Group Name: IZUKU-Support*\n*Group Link:* https://chat.whatsapp.com/BEhEne7RdGBC3y5vYltuxL`,
+            caption: `*Group Name: MAC-Support*\n*Group Link:* https://chat.whatsapp.com/BEhEne7RdGBC3y5vYltuxL`,
         });
 
     }
