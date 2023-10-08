@@ -109,7 +109,7 @@ cmd({
 │*⭐ Total Stars:* ${data.stargazers_count} stars
 │*🍴 Forks:* ${data.forks_count} forks
 │*📡 Repo:* https://github.com/Maccoder3/MAC-MD
-│*🏘Group:* https://chat.whatsapp.com/BEhEne7RdGBC3y5vYltuxL
+│*🏘Group:* https://chat.whatsapp.com/IpDbNkTpz1l520HHFuS7B7
 │*🧑‍💻Deploy MAC MD*:https://github.com/Maccoder3/MAC-MD
 ╰──────────────✬      * ˚  ✶`
         let buttonMessaged = {
