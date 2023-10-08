@@ -1,8 +1,5 @@
 <!DOCTYPE htmx>
 <html>
-<head>
-  <title>MAC-𝙼𝙳 𝙼𝚄𝙻𝚃𝙸 𝙳𝙴𝚅𝙸𝙲𝙴 𝙱𝙾𝚃</title>
-</head>
 <body>
   <p align="center">
     <a href="https://chat.whatsapp.com/BEhEne7RdGBC3y5vYltuxL">
