@@ -1,50 +1,105 @@
-const { bot, cmd } = require('../lib');
+const axios = require('axios');
+const { cmd } = require('../lib');
 
-// Initialize an object to store recorded text
-const recordedText = {};
+const rapidApiKey = 'bcdeae8e6bmsh3af33e24439971ep106cd9jsnfc28157e482b';
 
-// Command to record text
+// Create a map to store temporary email addresses and messages
+const tempEmails = new Map();
+
+// Function to generate a temporary email address
+async function generateTempEmail(userId) {
+  const options = {
+    method: 'GET',
+    url: 'https://privatix-temp-mail-v1.p.rapidapi.com/request/new/',
+    headers: {
+      'X-RapidAPI-Key':'bcdeae8e6bmsh3af33e24439971ep106cd9jsnfc28157e482b',
+      'X-RapidAPI-Host': 'privatix-temp-mail-v1.p.rapidapi.com'
+    }
+  };
+
+  try {
+    const response = await axios.request(options);
+    const email = response.data.email;
+    tempEmails.set(userId, { address: email, messages: [] }); // Store the generated email address for the user
+    return email;
+  } catch (error) {
+    console.error('Error generating temporary email:', error);
+    throw error;
+  }
+}
+
+// Function to check the inbox of a temporary email address
+async function checkInbox(userId) {
+  const email = tempEmails.get(userId).address;
+
+  const options = {
+    method: 'GET',
+    url: `https://privatix-temp-mail-v1.p.rapidapi.com/request/keepalive/id/${email}/`,
+    headers: {
+      'X-RapidAPI-Key':'bcdeae8e6bmsh3af33e24439971ep106cd9jsnfc28157e482b',
+      'X-RapidAPI-Host': 'privatix-temp-mail-v1.p.rapidapi.com'
+    }
+  };
+
+  try {
+    const response = await axios.request(options);
+    const messages = response.data;
+    tempEmails.get(userId).messages = messages; // Update the messages in the map
+    return messages;
+  } catch (error) {
+    console.error('Error checking temporary email inbox:', error);
+    throw error;
+  }
+}
+
+// Command for generating a temporary email address
 cmd({
-  pattern: "setaza",
-  desc: "Record a text message",
-  category: "utility",
-}, async (Void, citel, text) => {
-  const recorded = text.trim(); // Get the recorded text from the command.
-  const userId = citel.sender; // Use the sender's ID as the key.
-
-  recordedText[userId] = recorded; // Store the recorded text for this user.
-
-  await citel.reply(`aza has been recorded boss: "${recorded}"`);
-});
-
-// Command to delete recorded text
-cmd({
-  pattern: "delaza",
-  desc: "Delete the recorded text",
+  pattern: "tempmail",
+  desc: "Generate a temporary email address.",
   category: "utility",
 }, async (Void, citel) => {
-  const userId = citel.sender; // Get the sender's ID.
+  const userId = citel.sender;
 
-  if (recordedText[userId]) {
-    delete recordedText[userId]; // Remove the recorded text for this user.
-    await citel.reply("Recorded text has been deleted.");
-  } else {
-    await citel.reply("No recorded text found.");
+  try {
+    // Generate a temporary email address
+    const email = await generateTempEmail(userId);
+    await citel.reply(`Your temporary email address is: ${email}`);
+  } catch (error) {
+    console.error('Error generating temporary email:', error);
+    await citel.reply('An error occurred while generating the temporary email address.');
   }
 });
 
-// Listen for incoming messages
-bot.on('message', async (message) => {
-  const userId = message.sender; // Get the sender's ID
-  const text = message.content.toLowerCase(); // Convert the message content to lowercase for case-insensitive matching
+// Command for checking messages in the temporary email inbox
+cmd({
+  pattern: "checkmail",
+  desc: "Check your temporary email inbox.",
+  category: "utility",
+}, async (Void, citel) => {
+  const userId = citel.sender;
 
-  if (text.includes("send aza")) {
-    const recorded = recordedText[userId]; // Get the recorded text for this user
+  // Check if the user has a temporary email address
+  if (tempEmails.has(userId)) {
+    try {
+      // Check the inbox of the temporary email address
+      const inbox = await checkInbox(userId);
 
-    if (recorded) {
-      await bot.sendMessage(userId, `Here's our account number: ${recorded}`); // Send the recorded text to the user
-    } else {
-      await bot.sendMessage(userId, "No recorded text found."); // Send a message indicating no recorded text is available
+      if (inbox.length > 0) {
+        // Display the received messages
+        let messageList = "Your temporary email inbox:\n";
+        inbox.forEach((message, index) => {
+          messageList += `${index + 1}. From: ${message.from_email}, Subject: ${message.subject}\n`;
+        });
+
+        await citel.reply(messageList);
+      } else {
+        await citel.reply("Your temporary email inbox is empty.");
+      }
+    } catch (error) {
+      console.error('Error checking temporary email inbox:', error);
+      await citel.reply('An error occurred while checking the temporary email inbox.');
     }
+  } else {
+    await citel.reply("You don't have a temporary email address. Generate one with '.tempmail' first.");
   }
 });
