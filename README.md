@@ -16,15 +16,15 @@
       <img alt="whatsapp Group" src="https://img.shields.io/badge/ MAC Support Group -25D366?style=for-the-badge&logo=whatsapp&logoColor=blue" />
     </a>
   </p>
-  <hr>
-  <h2>Scan QR Code</h2>
-  <ol>
-    <li>TAP TO Get SESSION-ID by scanning QR code. (WhatsApp > Three dots > Linked Devices)</li>
-  </ol>
-  <h2>Fork Repo</h2>
-  <ol>
-    <li>Click <a href="https://github.com/Maccoder3/MAC-MD/fork">FORK</a></li>
-  </ol>
+---
+# ```Scan QR Code```
+
+1. ***Get [SESSION-ID](https://replit.com/@Excelottah/BLACK-Md) by scanning QR code. `Whatapp>Three dots>Linked Devices`***
+--- 
+# ```Fork Repo```
+2. ***Click [FORK](https://github.com/excelottah6/IZUKU-MD/fork)***
+ 
+---
   <hr>
   <h2>Deployments METHODS</h2>
   <details close>
