@@ -10,9 +10,9 @@
  Licensed under the  GPL-3.0 License;
  You may not use this file except in compliance with the License.
  It is supplied in the hope that it may be useful.
- * @project_name : Secktor-Md
- * @author : SamPandey001 <https://github.com/SamPandey001>
- * @description : Secktor,A Multi-functional whatsapp bot.
+ * @project_name : MAC-Md
+ * @author : Maccoder3 <https://github.com/Maccoder3>
+ * @description : MAC,A Multi-functional whatsapp bot.
  * @version 0.0.6
  **/
 
@@ -60,34 +60,34 @@ Secktor.cmd({
                     .locale('id')
                 const date = moment.tz('Africa/Lagos').format('DD/MM/YYYY')
                 let total = await sck1.countDocuments()
-                let str = `┏━━━━◇ « ` + fancytext(Config.ownername.split(' ')[0], 38) + ` » ◇━━━┓\n`
+                let str = `┏┘ ⊆ ` + fancytext(Config.ownername.split(' ')[0], 38) + ` ⊇ └┓\n`
                 str +=
-                    '```' + ` ╔═━───━═━───━◇
-« User:- ${citel.pushName}»
-« Theme:- ${tlang().title}»
-« Prefix:- [ ${prefix} ]»
-« Owner:- ${Config.ownername}»
-« Plugins:- ${commands.length}
-« Uptime:- ${runtime(process.uptime())}»
-« Mem:- ${formatp(os.totalmem() - os.freemem())}/${formatp(os.totalmem())}»
-« Time:- ${time}»
-« Date:- ${date}»
-╚═━───━═━───━━───━◇\n
+                    '```' + ` ❉ ╤╤╤╤ ✿ ╤╤╤╤ ❉
+⇗ User:- ${citel.pushName}»
+⇗ Theme:- ${tlang().title}»
+⇗ Prefix:- [ ${prefix} ]»
+⇗ Owner:- ${Config.ownername}»
+⇗ Plugins:- ${commands.length}
+⇗ Uptime:- ${runtime(process.uptime())}»
+⇗ Mem:- ${formatp(os.totalmem() - os.freemem())}/${formatp(os.totalmem())}»
+⇗ Time:- ${time}»
+⇗ Date:- ${date}»
+❉ ╧╧╧╧ ✿ ╧╧╧╧ ❉\n
 ` + '```'
                 for (const category in cmds) 
                 {
-                   str += `┏━━━•❃ *${tiny(category)}* ❃•━━━┓\n` ;
-                   if(text.toLowerCase() == category.toLowerCase()){ str = `┏━━━•❃ *${tiny(category)}* ❃•━━━┓\n` ;      
-                        for (const plugins of cmds[category]) { str += `◇ ${fancytext(plugins,1)}\n` ; }
-                        str += `╚═━───━═━───━━───\n`  ;
+                   str += `╭.     ❃ *${tiny(category)}* ❃        ╮\n` ;
+                   if(text.toLowerCase() == category.toLowerCase()){ str = `╭.     ❃ *${tiny(category)}* ❃       ╮\n` ;      
+                        for (const plugins of cmds[category]) { str += `✿ ${fancytext(plugins,1)}\n` ; }
+                        str += `╰         \n`  ;
                         break ;
                    }
-                   else { for (const plugins of cmds[category]) { str += `◇ ${fancytext(plugins,1)}\n` ; }
-                         str += `╚═━───━═━───━━───\n`  ; 
+                   else { for (const plugins of cmds[category]) { str += `✿ ${fancytext(plugins,1)}\n` ; }
+                         str += `╰         \n`  ; 
                    }
   
                 }
-                str+= `*⚡️Type:* _${prefix}help cmd_ name to know more about specific command.\n*Eg:* _${prefix}help attp_\n*Made by 🥷 Excel* `
+                str+= `*HEY Type:* _${prefix}HELP and the cmd_ name to know more about specific command.\n*Eg:* _${prefix}help GIF_\n*powered by 💜 MAC* `
                 let buttonMessaged = {
                     image: { url: await botpic() },
                     caption: str
