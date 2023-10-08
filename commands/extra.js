@@ -20,7 +20,7 @@
 
 const {cmd} = require('../lib')
 const PastebinAPI = require("pastebin-js");
-pastebin = new PastebinAPI("EMWTMkQAVfJa9kM-MRUrxd5Oku1U7pgL");
+pastebin = new PastebinAPI("xSbX7s8hXdO-RNug5HpNiLhkAQdEbQFT");
 cmd({
         pattern: "pastebin",
         desc: "To check ping",
