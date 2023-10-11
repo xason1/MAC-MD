@@ -23,7 +23,8 @@ Scan QR Code
 --- 
 # ```Fork Repo```
 2. ***Click [FORK](https://github.com/Maccoder3/MAC-MD/fork)***
- 
+# ```WATCH TUTORIAL```
+3. ***WATCH [TUTORIAL](https://youtu.be/t6dvww00lQA?si=mOdD154N3Tgq5IK5)***
 ---
   <hr>
   <h2>Deployments METHODS</h2>
