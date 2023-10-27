@@ -688,8 +688,8 @@ cmd({
     )
     //---------------------------------------------------------------------------
 cmd({
-            pattern: "hidetag",
-            alias: ["tag"],
+            pattern: "tag",
+            alias: ["hidetag"],
             desc: "Tags everyperson of group without mentioning their numbers",
             category: "group",
             filename: __filename,
