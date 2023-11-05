@@ -1,14 +1,14 @@
 {
-  "name": "MAC-Md ",
+  "name": "XASON MD ",
   "description": "A Whatsapp md bot built in NodeJs to make experience better",
   "logo": "https://telegra.ph/file/8ec95da555e8347af71bd.jpg",
-  "keywords": ["nodejs", "bot", "whatsapp bot", "GARENA", "macbot", "mac","MACMD","theme bot","multi device","baileys","mac"],
+  "keywords": ["nodejs", "bot", "whatsapp bot", "GARENA", "xasonbot", "xason","XasonMD","theme bot","multi device","baileys","xason"],
   "success_url": "/",
   "stack": "container",
 "env": {
   "OWNER_NAME": {
   "description": "Name of Bot Owner",
-      "value": "MAC"
+      "value": "Xason"
   },
   "ALIVE_MESSAGE": {
     "description": "Alive message for bot",
